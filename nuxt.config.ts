@@ -30,6 +30,30 @@ export default defineNuxtConfig({
         { name: 'twitter:description', content: DESC },
         { name: 'twitter:site', content: '@coscup' },
       ],
+      script: [
+        {
+          type: 'application/ld+json',
+          textContent: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Event',
+            'name': TITLE,
+            'startDate': '2026-08-08',
+            'endDate': '2026-08-09',
+            'eventStatus': 'https://schema.org/EventScheduled',
+            'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
+            'location': {
+              '@type': 'Place',
+              'name': 'Taiwan',
+            },
+            'description': DESC,
+            'organizer': {
+              '@type': 'Organization',
+              'name': 'COSCUP',
+              'url': 'https://coscup.org',
+            },
+          }),
+        },
+      ],
     },
   },
 
