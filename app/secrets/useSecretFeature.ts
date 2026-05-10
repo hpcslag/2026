@@ -1,6 +1,5 @@
 import { h, render } from 'vue'
 import { useRoute } from 'vue-router'
-import CpSecretFeature from './CpDragonBoatFestival.vue'
 
 export function useSecretFeature() {
   if (!import.meta.client) {
@@ -11,7 +10,7 @@ export function useSecretFeature() {
   const { mode } = route.query
   const now = new Date()
 
-  onMounted(() => {
+  async function registerSecretFeature() {
     if (mode === 'askew') {
       document.body.style.transform = `rotate(${Math.random() * 2 - 1}deg)`
     }
@@ -20,7 +19,14 @@ export function useSecretFeature() {
     document.body.appendChild(container)
 
     if (now.getMonth() === 5 && now.getDate() === 25) {
+      const { default: CpSecretFeature } = await import('./CpDragonBoatFestival.vue')
       render(h(CpSecretFeature), container)
     }
+  }
+
+  onMounted(() => {
+    const ric = window.requestIdleCallback ?? ((cb: IdleRequestCallback) => setTimeout(cb, 1))
+
+    ric(registerSecretFeature)
   })
 }
