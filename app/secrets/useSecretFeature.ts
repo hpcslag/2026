@@ -7,11 +7,10 @@ export function useSecretFeature() {
   }
 
   const route = useRoute()
-  const { mode } = route.query
   const now = new Date()
 
   async function registerSecretFeature() {
-    if (mode === 'askew') {
+    if (route.query.mode === 'askew') {
       document.body.style.transform = `rotate(${Math.random() * 2 - 1}deg)`
     }
 
