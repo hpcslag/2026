@@ -63,7 +63,7 @@ zh:
     service: 場務組
     production: 製播組
 en:
-  noStaff: The staff list has not been announced yet.
+  noStaff: The staff information has not been announced yet.
   group:
     coordinator: General Coordinator
     secretary: Secretary
