@@ -65,15 +65,15 @@ en:
   noStaff: The staff list has not been announced yet.
   group:
     coordinator: General Coordinator
-    secretary: Secretary Team
-    program: Program Team
+    secretary: Secretary
+    program: Program
     sponsorship: Sponsorship
-    engagement: Engagement Team
+    engagement: Engagement
     pr: Public Relations
-    it: IT Team
-    design: Design Team
+    it: IT
+    design: Design
     documentary: Documentary
     finance: Finance
-    service: Service Team
+    service: Service
     production: Production
 </i18n>
