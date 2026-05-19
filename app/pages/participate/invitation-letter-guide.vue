@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { locale } = useI18n()
 
-const { data } = useFetch<string>('https://hackmd.io/@coscup/ry2VoMnqWl/download', {
+const { data } = useFetch('/api/hackmd/ry2VoMnqWl', {
   key: 'hackmd:invitation-letter-guide',
 })
 
