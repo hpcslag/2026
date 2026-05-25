@@ -10,11 +10,16 @@ const content = computed(() => {
     return ''
   }
 
+  const raw = data.value
+    .replaceAll('*(中文版本在下方 / Chinese version below)*', '')
+    .replaceAll('*(English version above / 英文版本在上方)*', '')
+    .trim()
+
   const sections = Object.fromEntries(
-    Array.from(data.value.matchAll(/<!--\s*language:(\w+)\s*-->/g)).map((match, i, arr) => {
+    Array.from(raw.matchAll(/<!--\s*language:(\w+)\s*-->/g)).map((match, i, arr) => {
       const start = match.index + match[0].length
-      const end = arr[i + 1]?.index ?? data.value!.length
-      return [match[1], data.value!.slice(start, end).trim()]
+      const end = arr[i + 1]?.index ?? raw.length
+      return [match[1], raw.slice(start, end).trim()]
     }),
   )
 
