@@ -15,7 +15,7 @@ const { sessions: _sessions, day, timeRange, interval, rowHeight, columnWidth } 
 
 const { locale } = useI18n()
 
-const { containerRef, isDragging } = useDragScroll({ vertical: false })
+const { containerRef, isDragging } = useDragScroll({ scrollTarget: 'window' })
 
 function parseMinutes(isoStr: string) {
   const match = isoStr.match(/T(\d{2}):(\d{2})/)
