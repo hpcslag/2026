@@ -16,6 +16,7 @@ const menu = computed<MenuItem[]>(() => [
   { key: 'home', path: '/' },
   { key: 'about', path: '/about' },
   { key: 'transportation', path: '/transportation' },
+  { key: 'sponsors', path: '/sponsor' },
   {
     key: 'participate',
     children: [
@@ -189,6 +190,7 @@ en:
     transportation: "Transportation"
     participate: "Participate"
     invitation_letter_guide: "Invitation Letter Guide"
+    sponsors: "Sponsors"
     blog: "Blog"
     coc: "CoC"
 zh:
@@ -199,6 +201,7 @@ zh:
     about: "關於我們"
     transportation: "交通"
     participate: "參與指南"
+    sponsors: "贊助夥伴"
     invitation_letter_guide: "邀請函申請指南"
     blog: "部落格"
     coc: "社群守則"
