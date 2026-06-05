@@ -33,7 +33,7 @@ definePageMeta({
     <NuxtPage />
 
     <ClientOnly>
-      <template #placeholder>
+      <template #fallback>
         <div class="flex flex-col-reverse sm:flex-col">
           <!-- DaySelector -->
           <div class="px-6 pb-4 pt-3 flex w-screen justify-center">
