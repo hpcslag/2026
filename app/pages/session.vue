@@ -29,39 +29,54 @@ definePageMeta({
 </script>
 
 <template>
-  <main v-if="selectedDay">
+  <main>
     <NuxtPage />
 
-    <div class="flex flex-col-reverse sm:flex-col">
-      <CpSessionDaySelector
-        v-model="selectedDay"
-        class="w-screen bottom-0 left-0 sticky z-10 sm:bottom-auto"
-        :days="days"
-      />
+    <ClientOnly>
+      <template #fallback>
+        <div class="flex flex-col-reverse sm:flex-col">
+          <!-- DaySelector -->
+          <div class="px-6 pb-4 pt-3 flex w-screen justify-center">
+            <div class="rounded-full bg-gray-200 h-12 w-1/2 animate-pulse" />
+          </div>
 
-      <CpSessionList
-        class="sm:hidden"
-        :sessions="data?.[selectedDay] ?? []"
-      />
-      <CpSessionTable
-        class="hidden sm:grid"
-        :column-width="200"
-        :day="selectedDay"
-        :interval="5"
-        :row-height="50"
-        :sessions="data?.[selectedDay] ?? []"
-        :time-range="['09:00', '17:30']"
-      />
-    </div>
+          <!-- Session -->
+          <div class="rounded-xl bg-gray-200 h-screen w-[var(--viewport-width,100vw)] animate-pulse" />
+        </div>
+      </template>
 
-    <p v-if="!data?.[selectedDay]?.length">
-      {{ t('noSession') }}
-    </p>
-  </main>
-  <main v-else>
-    <p>
-      {{ t('noSession') }}
-    </p>
+      <template v-if="selectedDay">
+        <div class="flex flex-col-reverse sm:flex-col">
+          <CpSessionDaySelector
+            v-model="selectedDay"
+            class="w-screen bottom-0 left-0 sticky z-10 sm:bottom-auto"
+            :days="days"
+          />
+
+          <CpSessionList
+            class="sm:hidden"
+            :sessions="data?.[selectedDay] ?? []"
+          />
+          <CpSessionTable
+            class="hidden sm:grid"
+            :column-width="200"
+            :day="selectedDay"
+            :interval="5"
+            :row-height="50"
+            :sessions="data?.[selectedDay] ?? []"
+            :time-range="['09:00', '17:30']"
+          />
+        </div>
+
+        <p v-if="!data?.[selectedDay]?.length">
+          {{ t('noSession') }}
+        </p>
+      </template>
+
+      <p v-else>
+        {{ t('noSession') }}
+      </p>
+    </ClientOnly>
   </main>
 </template>
 
