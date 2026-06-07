@@ -9,6 +9,9 @@ export const SPONSOR_LEVELS = [
 
 export const SponsorLevelSchema = z.enum(SPONSOR_LEVELS)
 
+const RewardTypeSchema = z.enum(['Null', '連續贊助', '累積贊助']).default('Null').catch('Null')
+const RewardDataSchema = z.coerce.number().int().nonnegative().default(0).catch(0)
+
 export const SponsorListRowSchema = z.object({
   id: z.string(),
   level: SponsorLevelSchema,
@@ -19,8 +22,8 @@ export const SponsorListRowSchema = z.object({
   link: z.string(),
   image: z.string(),
   publish: z.string().transform((val) => val.toLowerCase() === 'true'),
-  reward_type: z.string(),
-  reward_data: z.coerce.number().default(0),
+  reward_type: RewardTypeSchema,
+  reward_data: RewardDataSchema,
 })
 
 export const SponsorSchema = z.object({
@@ -36,8 +39,8 @@ export const SponsorSchema = z.object({
   }),
   link: z.string(),
   image: z.string(),
-  reward_type: z.string(),
-  reward_data: z.coerce.number().default(0),
+  reward_type: RewardTypeSchema,
+  reward_data: RewardDataSchema,
 })
 
 export type SponsorListRow = z.infer<typeof SponsorListRowSchema>
