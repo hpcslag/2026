@@ -48,7 +48,7 @@ const hasSponsor = computed(() => !!data.value?.length)
             :to="sponsor.link"
           >
             <span
-              v-if="sponsor.reward_type !== 'Null'"
+              v-if="sponsor.reward_type !== 'Null' && sponsor.reward_data > 0"
               class="text-[8px] text-white leading-tight font-700 py-1 text-center w-[90px] pointer-events-none left-[-24px] top-[8px] absolute -rotate-45"
               :class="sponsor.reward_type === '連續贊助' ? 'bg-amber-400' : 'bg-teal-500'"
             >
