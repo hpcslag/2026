@@ -25,8 +25,7 @@ type QuestionKey = keyof typeof QUESTION_MAP
 type ParsedAnswer = Partial<Record<QuestionKey, string>>
 type ParsedSlot = Omit<Slot, 'room'> & { room?: Room }
 
-// 議程難度正規化表。pretalx 的難度欄位是投稿者自由填寫的自訂問題答案，
-// 各種寫法（中英文、大小寫）都收斂成統一的英文 enum，方便前端對應翻譯。
+// 議程難度正規化表。pretalx 的難度欄位是一個有固定選項的自訂問題答案。
 const DIFFICULTY_GENERALIZE_MAP: Record<string, SessionDifficulty> = {
   初學者: 'Elementary',
   入門: 'Elementary',
