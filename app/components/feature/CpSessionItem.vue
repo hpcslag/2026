@@ -18,8 +18,10 @@ defineProps<{
         {{ title }}
       </h3>
       <div class="my-1 flex gap-2 items-center">
-        <span>{{ room }}</span>
-        <span>•</span>
+        <template v-if="room && room.trim() !== ''">
+          <span>{{ room }}</span>
+          <span>•</span>
+        </template>
         <time class="text-base opacity-50">{{ start }} ~ {{ end }}</time>
       </div>
       <p class="text-sm my-1">
