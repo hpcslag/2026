@@ -93,10 +93,12 @@ const emptyVariant = computed<'filter' | 'favorite' | 'shared'>(() => {
 })
 
 function clearShare() {
+  // Pin the current day before the share query disappears; otherwise selectedDay
+  // falls back to days[0], which may hold none of the imported sessions.
+  manualSelectedDay.value = selectedDay.value
   const query = { ...route.query }
   delete query.filter
   router.replace({ query })
-  manualSelectedDay.value = null
 }
 
 function importShared() {
