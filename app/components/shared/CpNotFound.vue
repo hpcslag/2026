@@ -49,10 +49,10 @@ function talkeMeHome() {
 <i18n lang="yaml">
   en:
     pageNotFound: 'Page not found'
-    description: "Sorry, we could not find the page you were looking for."
+    description: "Sorry! we could not find the page you were looking for."
     takeMeHome: 'Take me home'
   zh:
     pageNotFound: '頁面不存在'
-    description: "抱歉我們找不到您要查找的頁面。"
+    description: "抱歉！我們找不到您要查找的頁面。"
     takeMeHome: '帶我回首頁'
 </i18n>
