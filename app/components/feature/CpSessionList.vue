@@ -21,6 +21,9 @@ const sessions = computed(() => {
         speakers: session.speakers?.map((s) => s[locale.value].name).join(', '),
         start: session.start!.slice(11, 16),
         end: session.end!.slice(11, 16),
+        room: locale.value === 'zh'
+          ? (session.room?.['zh-hans'] || session.room?.en || '')
+          : (session.room?.en || session.room?.['zh-hans'] || ''),
         tags: [],
       })),
     (session) => session.start,
@@ -47,6 +50,7 @@ const times = Object.keys(sessions.value).sort()
         >
           <CpSessionItem
             :end="session.end"
+            :room="session.room"
             :speaker="session.speakers"
             :start="session.start"
             :tags="session.tags"
