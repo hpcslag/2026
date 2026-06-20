@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { FilterOption } from '~/composables/useSessionFilter'
 import CpSessionFilterDropdown from './CpSessionFilterDropdown.vue'
-import CpSessionSearchField from './CpSessionSearchField.vue'
 
 defineProps<{
   roomOptions: FilterOption[]
@@ -11,6 +10,8 @@ defineProps<{
 const selectedRoomIds = defineModel<string[]>('selectedRoomIds', { default: () => [] })
 const selectedTagIds = defineModel<string[]>('selectedTagIds', { default: () => [] })
 const searchQuery = defineModel<string>('searchQuery', { default: '' })
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -30,9 +31,20 @@ const searchQuery = defineModel<string>('searchQuery', { default: '' })
       />
     </div>
 
-    <CpSessionSearchField
+    <CpTextField
       v-model="searchQuery"
       class="min-w-0 w-full sm:flex-none sm:h-9 sm:w-80"
+      :clear-label="t('clear')"
+      :placeholder="t('placeholder')"
     />
   </div>
 </template>
+
+<i18n lang="yaml">
+  en:
+    placeholder: 'Search sessions…'
+    clear: 'Clear search'
+  zh:
+    placeholder: '搜尋議程……'
+    clear: '清除搜尋'
+</i18n>

@@ -8,7 +8,7 @@ export interface FilterOption {
 interface UseSessionFilterOptions {
   sessionsByDay: MaybeRefOrGetter<Record<string, SessionSummary[]> | null | undefined>
   selectedDay: MaybeRefOrGetter<string | null | undefined>
-  locale: MaybeRefOrGetter<string>
+  locale: MaybeRefOrGetter<'zh' | 'en'>
 }
 
 function roomId(session: SessionSummary) {
@@ -35,7 +35,7 @@ export function useSessionFilter({ sessionsByDay, selectedDay, locale }: UseSess
   // The session type is offered as a filterable tag alongside its real tags.
   function sessionTags(session: SessionSummary): FilterOption[] {
     return [
-      { id: `type:${session.zh.type}\u0000${session.en.type}`, label: session[isZh.value ? 'zh' : 'en'].type },
+      { id: `type:${session.zh.type}\u0000${session.en.type}`, label: session[toValue(locale)].type },
       ...session.tags.map((tag) => ({ id: `tag:${tag}`, label: tag })),
     ].filter((tag) => tag.label)
   }
@@ -71,7 +71,7 @@ export function useSessionFilter({ sessionsByDay, selectedDay, locale }: UseSess
     const rooms = new Set(selectedRoomIds.value)
     const tags = new Set(selectedTagIds.value)
     const query = searchQuery.value.toLocaleLowerCase().trim()
-    const lang = isZh.value ? 'zh' : 'en'
+    const contentLang = toValue(locale)
 
     return daySessions.value.filter((session) => {
       if (rooms.size && !rooms.has(roomId(session))) {
@@ -86,11 +86,11 @@ export function useSessionFilter({ sessionsByDay, selectedDay, locale }: UseSess
         return true
       }
 
-      const content = session[lang]
+      const content = session[contentLang]
       const haystack = [
         content.title,
         content.describe,
-        ...session.speakers.flatMap((speaker) => [speaker[lang].name, speaker.id]),
+        ...session.speakers.flatMap((speaker) => [speaker[contentLang].name, speaker.id]),
       ].join('\n').toLocaleLowerCase()
 
       return haystack.includes(query)
