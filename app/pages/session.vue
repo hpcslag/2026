@@ -2,10 +2,13 @@
 import { prerenderRoutes } from 'nuxt/app'
 import { useI18n } from 'vue-i18n'
 import CpSessionDaySelector from '~/components/feature/CpSessionDaySelector.vue'
+import CpSessionEmptyBanner from '~/components/feature/CpSessionEmptyBanner.vue'
+import CpSessionFilterBar from '~/components/feature/CpSessionFilterBar.vue'
 import CpSessionList from '~/components/feature/CpSessionList.vue'
 import CpSessionTable from '~/components/feature/CpSessionTable.vue'
+import { useSessionFilter } from '~/composables/useSessionFilter'
 
-const { t } = useI18n()
+const { locale, t } = useI18n()
 
 const { data } = await useFetch('/api/session')
 
@@ -15,6 +18,19 @@ const days = computed(() => Object.keys(data?.value ?? {}).sort())
 const selectedDay = computed({
   get: () => manualSelectedDay.value ?? days.value[0] ?? null,
   set: (value) => void (manualSelectedDay.value = value),
+})
+
+const {
+  searchQuery,
+  filteredSessions,
+  roomOptions,
+  tagOptions,
+  selectedRoomIds,
+  selectedTagIds,
+} = useSessionFilter({
+  sessionsByDay: data,
+  selectedDay,
+  locale,
 })
 
 prerenderRoutes(
@@ -43,10 +59,20 @@ definePageMeta({
 
     <ClientOnly>
       <template #fallback>
-        <div class="flex flex-col-reverse sm:flex-col">
+        <div class="flex flex-col">
           <!-- DaySelector -->
-          <div class="px-6 pb-4 pt-3 flex w-screen justify-center">
+          <div class="px-6 pb-4 pt-3 flex w-[var(--viewport-width,100vw)] justify-center order-last sm:order-none">
             <div class="rounded-full bg-gray-200 h-12 w-1/2 animate-pulse" />
+          </div>
+
+          <!-- FilterBar -->
+          <div class="p-4 flex flex-col gap-3 w-[var(--viewport-width,100vw)] items-stretch left-0 sticky z-10 sm:flex-row sm:items-center sm:justify-between">
+            <div class="flex shrink-0 gap-3 items-center justify-center sm:justify-start">
+              <div class="rounded-md bg-gray-200 h-12 w-18 animate-pulse sm:h-9" />
+              <div class="rounded-md bg-gray-200 h-12 w-18 animate-pulse sm:h-9" />
+            </div>
+
+            <div class="rounded-md bg-gray-200 h-12 w-full animate-pulse sm:flex-none sm:h-9 sm:w-80" />
           </div>
 
           <!-- Session -->
@@ -55,31 +81,43 @@ definePageMeta({
       </template>
 
       <template v-if="selectedDay">
-        <div class="flex flex-col-reverse sm:flex-col">
+        <div class="flex flex-col">
           <CpSessionDaySelector
             v-model="selectedDay"
-            class="w-screen bottom-0 left-0 sticky z-10 sm:bottom-auto"
+            class="w-[var(--viewport-width,100vw)] bottom-0 left-0 order-last sticky z-10 sm:bottom-auto sm:order-none"
             :days="days"
           />
 
+          <CpSessionFilterBar
+            v-model:search-query="searchQuery"
+            v-model:selected-room-ids="selectedRoomIds"
+            v-model:selected-tag-ids="selectedTagIds"
+            class="p-4 left-0 sticky z-10"
+            :room-options="roomOptions"
+            :tag-options="tagOptions"
+          />
+
           <CpSessionList
+            v-if="filteredSessions.length > 0"
             class="sm:hidden"
-            :sessions="data?.[selectedDay] ?? []"
+            :sessions="filteredSessions"
           />
           <CpSessionTable
+            v-if="filteredSessions.length > 0"
             class="hidden sm:grid"
             :column-width="200"
             :day="selectedDay"
             :interval="5"
             :row-height="50"
-            :sessions="data?.[selectedDay] ?? []"
+            :sessions="filteredSessions"
             :time-range="['09:00', '17:30']"
           />
-        </div>
 
-        <p v-if="!data?.[selectedDay]?.length">
-          {{ t('noSession') }}
-        </p>
+          <CpSessionEmptyBanner
+            v-if="filteredSessions.length === 0"
+            class="mx-4"
+          />
+        </div>
       </template>
 
       <p v-else>
