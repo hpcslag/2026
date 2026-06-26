@@ -21,6 +21,9 @@ const sessions = computed(() => {
         speakers: session.speakers?.map((s) => s[locale.value].name).join(', '),
         start: session.start!.slice(11, 16),
         end: session.end!.slice(11, 16),
+        room: locale.value === 'zh'
+          ? (session.room?.['zh-hans'] || session.room?.en || '')
+          : (session.room?.en || session.room?.['zh-hans'] || ''),
         tags: [],
       })),
     (session) => session.start,
@@ -31,12 +34,12 @@ const times = Object.keys(sessions.value).sort()
 </script>
 
 <template>
-  <div class="flex flex-col gap-6 w-screen">
+  <div class="flex flex-col gap-6 w-[var(--viewport-width,100vw)] isolate">
     <section
       v-for="time in times"
       :key="time"
     >
-      <h3 class="text-lg text-primary-400 font-medium mb-2 py-1 bg-white top-0 sticky z-1">
+      <h3 class="text-lg text-primary-400 font-medium mb-2 py-1 bg-white top-0 sticky z-content">
         {{ time }}
       </h3>
       <div class="flex flex-col gap-2">
@@ -47,6 +50,7 @@ const times = Object.keys(sessions.value).sort()
         >
           <CpSessionItem
             :end="session.end"
+            :room="session.room"
             :speaker="session.speakers"
             :start="session.start"
             :tags="session.tags"

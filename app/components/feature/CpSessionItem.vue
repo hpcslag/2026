@@ -6,6 +6,7 @@ defineProps<{
   start: string
   end: string
   speaker: string
+  room?: string
   tags: string[]
 }>()
 </script>
@@ -16,7 +17,13 @@ defineProps<{
       <h3 class="text-base text-inherit font-normal my-1">
         {{ title }}
       </h3>
-      <time class="text-base opacity-50">{{ start }} ~ {{ end }}</time>
+      <div class="my-1 flex gap-2 items-center">
+        <template v-if="room && room.trim() !== ''">
+          <span>{{ room }}</span>
+          <span>•</span>
+        </template>
+        <time class="text-base opacity-50">{{ start }} ~ {{ end }}</time>
+      </div>
       <p class="text-sm my-1">
         {{ speaker }}
       </p>
