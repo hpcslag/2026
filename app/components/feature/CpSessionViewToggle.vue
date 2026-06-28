@@ -1,17 +1,17 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends string">
 import CpButton from '~/components/shared/CpButton.vue'
 
-export interface SessionViewItem {
-  key: string
+export interface SessionViewItem<T extends string> {
+  key: T
   label: string
   icon?: string
 }
 
 defineProps<{
-  items: SessionViewItem[]
+  items: SessionViewItem<T>[]
 }>()
 
-const model = defineModel<string>({ required: true })
+const model = defineModel<T>({ required: true })
 </script>
 
 <template>

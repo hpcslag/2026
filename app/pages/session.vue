@@ -65,8 +65,9 @@ const {
   locale,
 })
 
-const view = ref<'all' | 'favorite'>('all')
-const viewItems = computed(() => [
+type SessionView = 'all' | 'favorite'
+const view = ref<SessionView>('all')
+const viewItems = computed<{ key: SessionView, label: string, icon?: string }[]>(() => [
   { key: 'all', label: t('view.all') },
   { key: 'favorite', label: t('view.favorite'), icon: 'tabler:bookmark' },
 ])
