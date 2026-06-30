@@ -1,6 +1,6 @@
 ---
 title: Sponsorship FAQ
-description: Frequently asked questions about COSCUP 2026 x UbuCon Asia sponsorship.
+description: Frequently asked questions about COSCUP x UbuCon Asia 2026 sponsorship.
 ---
 
 ## FAQ
