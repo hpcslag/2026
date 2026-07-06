@@ -82,7 +82,7 @@ There is more space beyond the front area. You are welcome to chat behind the bi
 
 ## Notes
 
-1. Please follow our [Code of Conduct](https://hackmd.io/@coscup/cococo-zh).
+1. Please follow our [Code of Conduct](https://hackmd.io/@coscup/cococo-en).
 2. Please drink responsibly. Minors are prohibited from drinking alcohol.
 3. Please do not damage tables or chairs.
 4. Smoking is not allowed indoors.

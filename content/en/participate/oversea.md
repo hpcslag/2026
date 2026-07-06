@@ -15,7 +15,7 @@ Before departure, we recommend checking:
 
 - Your passport should be valid for at least 6 months.
 - VISA: whether you need a visa, eVisa, or visa-free entry.
-- Invitation Letter: whether you need an invitation letter from COSCUP. For visa and invitation letter application instructions, refer to: [Invitation Letter Application Guide for Visa](https://coscup.org/2026/participate/invitation-letter-guide).
+- Invitation Letter: whether you need an invitation letter from COSCUP. For visa and invitation letter application instructions, refer to: [Invitation Letter Application Guide for Visa](https://coscup.org/2026/en/participate/invitation-letter-guide).
 - Arrival Card: fill out your entry information in advance: [https://twac.immigration.gov.tw/](https://twac.immigration.gov.tw/)
 - Flights, accommodation, travel insurance, and emergency contact information.
 - Local internet access in Taiwan, SIM card, or eSIM plan.
@@ -40,7 +40,7 @@ Pay attention to sun protection and hydration. Wear light, breathable clothing t
 
 ## Public Transportation
 
-COSCUP's main venue is at National Taiwan University of Science and Technology (Taiwan Tech / NTUST). For transportation to the venue, airport transfers, city public transportation, and related information, refer to: [Transportation](https://coscup.org/2026/transportation).
+COSCUP's main venue is at National Taiwan University of Science and Technology (Taiwan Tech / NTUST). For transportation to the venue, airport transfers, city public transportation, and related information, refer to: [Transportation](https://coscup.org/2026/en/transportation).
 
 Most map tools work well. The best choice depends on how much information you need and your personal preference. Before departure, we recommend saving your accommodation, the venue, nearby convenience stores, and emergency meeting points in your preferred map tool.
 
