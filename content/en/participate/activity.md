@@ -24,7 +24,7 @@ You can move between the three venue areas through the basketball court, tennis 
 
 :::info{title="Conference Information"}
 
-- Please refer to the venue map information page: [https://coscup.org/2026/venue](https://coscup.org/2026/venue) <span style="color:#000;background:#ff0;">[Coming soon. Stay tuned 07/25]</span>
+- Venue map information: <span style="color:#000;background:#ff0;">[Coming soon. Stay tuned 07/25]</span>
 
 :::
 

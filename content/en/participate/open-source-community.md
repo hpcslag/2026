@@ -81,7 +81,7 @@ XXX Open Source Session Track
 
 Example Session schedule:
 
-Sample download link: [https://docs.google.com/document/d/17SU8FqrAzEYE8LyPClm_95-vAmzsqVi7eEMU1Lrgp8Q/edit?usp=sharing](https://docs.google.com/document/d/17SU8FqrAzEYE8LyPClm_95-vAmzsqVi7eEMU1Lrgp8Q/edit?usp=sharing)
+Sample download link: <a href="https://docs.google.com/document/d/17SU8FqrAzEYE8LyPClm_95-vAmzsqVi7eEMU1Lrgp8Q/edit?usp=sharing" target="_blank" rel="noopener noreferrer">https://docs.google.com/document/d/17SU8FqrAzEYE8LyPClm_95-vAmzsqVi7eEMU1Lrgp8Q/edit?usp=sharing</a>
 
 <p style="font-size: 1.5em; font-weight: 700; margin-bottom: 0; text-align: center;">TR 515 (08/10 Sunday) - Agenda</p>
 <p style="font-size: 0.95em; margin-top: 4px; text-align: center;">XXX Open Source Session Track</p>
