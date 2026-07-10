@@ -59,9 +59,9 @@ All-you-can-drink tickets can be obtained through pre-purchase, invitation ticke
 - Normal Ticket: 2026-08-05 20:00 to 2026-08-07 20:45 (UTC+8)
 - Onsite purchase is available.
 
-| All-you-can-drink Ticket Type                                      | Price   |
-| ----------------------------------------------------------------- | ------- |
-| Early bird pre-order Pre-Party All-you-can-drink Ticket (Location) | NTD$350 |
+| All-you-can-drink Ticket Type                                              | Price   |
+| -------------------------------------------------------------------------- | ------- |
+| Early bird pre-order Pre-Party All-you-can-drink Ticket (Location)         | NTD$350 |
 | For normal ticket / On-site Purchase of Pre-party All-you-can-drink Ticket | NTD$400 |
 
 ## Check-in
